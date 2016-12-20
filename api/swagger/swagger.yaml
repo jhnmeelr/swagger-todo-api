@@ -30,6 +30,23 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Todo"
+      x-swagger-router-controller: "AddTodo"
+    post:
+      description: "Add a new Todo"
+      operationId: "AddTodo"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "todo"
+        description: "the todo to be added"
+        required: true
+        schema:
+          $ref: "#definitions/Todo"
+      responses:
+        200:
+          description: "Successful todo add"
+      x-swagger-router-controller: "AddTodo"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
