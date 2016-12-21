@@ -9,12 +9,12 @@ function GetAllTodos(req, res) {
         q: '*',
         _sourceInclude: 'todo_id, todo, completed, tags, author, completeddate, duedate'
     }, function(error, response) {
+        res.header('Content-Type', 'application/json');
         if (error) {
             res.end(JSON.stringify(error));
         } else {
             var results = [];
             results = response.hits.hits.map(function(hit) { return hit._source });
-            console.log(results);
             res.header('Content-Type', 'application/json');
             res.end(JSON.stringify(results));
         }
